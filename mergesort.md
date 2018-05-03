@@ -28,7 +28,8 @@ This is the code of mergesort
                     a[k] = R[j++];
             }
         }
-    }     // merge two sorted subarray 
+    }     
+    // merge two sorted subarray 
 
     void mergesort(int *a,int p,int r)
     {
