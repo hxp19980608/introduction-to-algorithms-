@@ -1,35 +1,19 @@
 This is the code of mergesort
     
-    int L[100010];
-    int R[100010];
-
     void merge(int *a,int p,int q,int r)
     {
-        int n1 = q-p+1,n2 = r-q;    
-        for (int i = 1;i <= n1;i ++)
-            L[i] = a[p+i-1];
-        for (int i = 1;i <= n2;i ++)
-            R[i] = a[q+i];
-        int i = 1,j = 1;
-        for (int k = p;k <= r;k ++)
+        for (int i = q+1;i <= r;i ++)
         {
-            if(i > n1 || j > n2)
-            {
-                if (i > n1)
-                    a[k] = R[j++];
-                else if (j > n2)
-                    a[k] = L[i++];
-            }   
-            else
-            {
-                if (L[i] <= R[j])
-                    a[k] = L[i++];
-                else
-                    a[k] = R[j++];
-            }
+            int key = a[i];
+            int pos = p-1;
+            int j;
+            for (j = i-1;j > pos && a[j] > key;j --)
+                a[j+1] = a[j];
+            pos = j+1;
+            a[j+1] = key;
         }
     }   // put two sorted subarray together
-      
+  
     void mergesort(int *a,int p,int r)
     {
         if (p < r)
